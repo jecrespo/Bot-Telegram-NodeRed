@@ -1,0 +1,148 @@
+[
+    {
+        "id": "c55a6a9d.251d68",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "1c966594.5ae91a"
+            ]
+        ]
+    },
+    {
+        "id": "1c966594.5ae91a",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "flow",
+                "to": "originalMessage.from.username",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "b37510d5.bf716",
+                "f9c3aaac.474cb8"
+            ]
+        ]
+    },
+    {
+        "id": "b37510d5.bf716",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/hola",
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [
+                "699f1646.e97398"
+            ]
+        ]
+    },
+    {
+        "id": "f9c3aaac.474cb8",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/quetal",
+        "x": 490,
+        "y": 440,
+        "wires": [
+            [
+                "fd6d51e9.9a66f"
+            ]
+        ]
+    },
+    {
+        "id": "699f1646.e97398",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola {{username}} 👏"
+            },
+            {
+                "message": "👍"
+            },
+            {
+                "message": "Adiós, mantengamos la distancia de seguridad 😷"
+            },
+            {
+                "message": "Me alegro de volver a verte {{username}} 😁"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 650,
+        "y": 400,
+        "wires": [
+            [
+                "ec60a0f8.8c47a"
+            ]
+        ]
+    },
+    {
+        "id": "fd6d51e9.9a66f",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hoy no me encuentro muy bien 😷"
+            },
+            {
+                "message": "Muy bien {{username}} ¿Y tu?"
+            },
+            {
+                "message": "Aquí en casa. Recuerdate ¡Quedaté en casa! 🏠"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 650,
+        "y": 440,
+        "wires": [
+            [
+                "ec60a0f8.8c47a"
+            ]
+        ]
+    },
+    {
+        "id": "ec60a0f8.8c47a",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 830,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    }
+]

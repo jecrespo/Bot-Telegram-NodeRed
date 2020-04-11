@@ -1,0 +1,197 @@
+[
+    {
+        "id": "6a786d51.9c12a4",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 760,
+        "wires": [
+            [
+                "9e53e05e.8db81",
+                "c831375e.de21a8"
+            ]
+        ]
+    },
+    {
+        "id": "9e53e05e.8db81",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/enciende",
+        "x": 340,
+        "y": 760,
+        "wires": [
+            [
+                "fed77841.defea8"
+            ]
+        ]
+    },
+    {
+        "id": "c831375e.de21a8",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/apaga",
+        "x": 340,
+        "y": 800,
+        "wires": [
+            [
+                "14fb096b.04ecc7"
+            ]
+        ]
+    },
+    {
+        "id": "fed77841.defea8",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 760,
+        "wires": [
+            [
+                "e9b25c14.01afd",
+                "150e4da0.f24952"
+            ]
+        ]
+    },
+    {
+        "id": "14fb096b.04ecc7",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 800,
+        "wires": [
+            [
+                "e9b25c14.01afd",
+                "84a1f34.51f1c1"
+            ]
+        ]
+    },
+    {
+        "id": "e9b25c14.01afd",
+        "type": "mqtt out",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "m5stickc/led",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 710,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "150e4da0.f24952",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Led Encendido"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 690,
+        "y": 720,
+        "wires": [
+            [
+                "4c8d2b07.0022c4"
+            ]
+        ]
+    },
+    {
+        "id": "84a1f34.51f1c1",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Led apagado"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 690,
+        "y": 840,
+        "wires": [
+            [
+                "4c8d2b07.0022c4"
+            ]
+        ]
+    },
+    {
+        "id": "4c8d2b07.0022c4",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 950,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    },
+    {
+        "id": "6803b3c6.3db1bc",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "m20.cloudmqtt.com",
+        "port": "10488",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

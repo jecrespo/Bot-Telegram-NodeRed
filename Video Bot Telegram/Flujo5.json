@@ -1,0 +1,122 @@
+[
+    {
+        "id": "84e9eb57.8762a8",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "38a90205.251c0e"
+            ]
+        ]
+    },
+    {
+        "id": "38a90205.251c0e",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/hora",
+        "x": 310,
+        "y": 420,
+        "wires": [
+            [
+                "56731d.5b4b1ce4"
+            ]
+        ]
+    },
+    {
+        "id": "56731d.5b4b1ce4",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hora",
+                "pt": "flow",
+                "to": "$now()",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "e74644c8.820a78"
+            ]
+        ]
+    },
+    {
+        "id": "e74644c8.820a78",
+        "type": "moment",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "",
+        "input": "hora",
+        "inputType": "flow",
+        "inTz": "Etc/UTC",
+        "adjAmount": "2",
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "",
+        "locale": "\"POSIX\"",
+        "output": "hora",
+        "outputType": "flow",
+        "outTz": "Etc/UTC",
+        "x": 600,
+        "y": 480,
+        "wires": [
+            [
+                "2eef1594.07269a"
+            ]
+        ]
+    },
+    {
+        "id": "2eef1594.07269a",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola esta es la fecha y hora:\n\n{{hora}}"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 690,
+        "y": 420,
+        "wires": [
+            [
+                "fc861b5b.3e9a38"
+            ]
+        ]
+    },
+    {
+        "id": "fc861b5b.3e9a38",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 850,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    }
+]

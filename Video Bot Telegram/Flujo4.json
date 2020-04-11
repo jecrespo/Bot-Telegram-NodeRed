@@ -1,0 +1,116 @@
+[
+    {
+        "id": "dbe9499e.100028",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "c26920ba.c8a5e"
+            ]
+        ]
+    },
+    {
+        "id": "c26920ba.c8a5e",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/tiempo",
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "2887bf4a.008bf"
+            ]
+        ]
+    },
+    {
+        "id": "2887bf4a.008bf",
+        "type": "openweathermap",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "logrono",
+        "country": "Espana",
+        "language": "es",
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "7890acdf.39a1e4"
+            ]
+        ]
+    },
+    {
+        "id": "7890acdf.39a1e4",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tiempo",
+                "pt": "flow",
+                "to": "payload.description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [
+                "b7c6ca8b.fd84f8"
+            ]
+        ]
+    },
+    {
+        "id": "b7c6ca8b.fd84f8",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola este es el tiempo solicitado:\n\n{{tiempo}}"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 770,
+        "y": 360,
+        "wires": [
+            [
+                "c256b90d.b4aea8"
+            ]
+        ]
+    },
+    {
+        "id": "c256b90d.b4aea8",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 950,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    }
+]

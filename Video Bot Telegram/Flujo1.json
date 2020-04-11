@@ -1,0 +1,74 @@
+[
+    {
+        "id": "c6588f41.31fad",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "b56dbbfc.886138",
+                "468f84be.2d0b0c"
+            ]
+        ]
+    },
+    {
+        "id": "b56dbbfc.886138",
+        "type": "debug",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 400,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "468f84be.2d0b0c",
+        "type": "ui_text",
+        "z": "9bb3e1e5.884ce",
+        "group": "e9513c0d.64a8c",
+        "order": 1,
+        "width": "",
+        "height": "",
+        "name": "Telegram feed:   ",
+        "label": "",
+        "format": "{{msg.payload.content}}",
+        "layout": "col-center",
+        "x": 420,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    },
+    {
+        "id": "e9513c0d.64a8c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Telegram",
+        "tab": "1caf7907.db7587",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1caf7907.db7587",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Telegram",
+        "icon": "dashboard",
+        "order": 1
+    }
+]

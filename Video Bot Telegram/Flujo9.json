@@ -1,0 +1,170 @@
+[
+    {
+        "id": "c8ff4724.d761c8",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 900,
+        "wires": [
+            [
+                "17f77785.35dfb8"
+            ]
+        ]
+    },
+    {
+        "id": "17f77785.35dfb8",
+        "type": "switch",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "property": "payload.content",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "/",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 900,
+        "wires": [
+            [
+                "717fa77b.479188"
+            ],
+            [
+                "e8619f7f.44b33"
+            ]
+        ]
+    },
+    {
+        "id": "717fa77b.479188",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/mensaje",
+        "x": 440,
+        "y": 860,
+        "wires": [
+            [
+                "82ebe12b.4d6d4"
+            ]
+        ]
+    },
+    {
+        "id": "e8619f7f.44b33",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 940,
+        "wires": [
+            [
+                "c425c4d9.cf3e58"
+            ]
+        ]
+    },
+    {
+        "id": "82ebe12b.4d6d4",
+        "type": "chatbot-ask",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "answers": [
+            {
+                "value": "Hola",
+                "label": "Hola"
+            },
+            {
+                "value": "SOS",
+                "label": "SOS"
+            },
+            {
+                "value": "Mensaje desde Telegram",
+                "label": "Mensaje desde Telegram"
+            }
+        ],
+        "message": "¿Que mensaje quieres mandar a la pantalla?",
+        "x": 610,
+        "y": 860,
+        "wires": [
+            [
+                "95a7f43e.0b7518"
+            ]
+        ]
+    },
+    {
+        "id": "c425c4d9.cf3e58",
+        "type": "mqtt out",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "m5stickc/pantalla",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 650,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "95a7f43e.0b7518",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 810,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    },
+    {
+        "id": "6803b3c6.3db1bc",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "m20.cloudmqtt.com",
+        "port": "10488",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

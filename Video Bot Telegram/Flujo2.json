@@ -1,0 +1,112 @@
+[
+    {
+        "id": "a9c4f195.e216d",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "876e2bac.dd4728"
+            ]
+        ]
+    },
+    {
+        "id": "876e2bac.dd4728",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "nombre",
+                "pt": "flow",
+                "to": "originalMessage.from.first_name",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "400e3866.c55778",
+                "bc7025a7.d77f88"
+            ]
+        ]
+    },
+    {
+        "id": "400e3866.c55778",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/start",
+        "x": 490,
+        "y": 280,
+        "wires": [
+            [
+                "668cfc50.398514"
+            ]
+        ]
+    },
+    {
+        "id": "bc7025a7.d77f88",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/help",
+        "x": 490,
+        "y": 320,
+        "wires": [
+            [
+                "668cfc50.398514"
+            ]
+        ]
+    },
+    {
+        "id": "668cfc50.398514",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola {{nombre}}\n\nstart - inicio del bot\nhelp - muestra los comandos\nhola - saluda al bot\nquetal - pregunta al bot que tal está\ntemperatura - temperatura en tu ciudad\nhumedad - humedad en tu ciudad\ntiempo - que tiempo atmosférico hace en tu ciudad\nhora - hora y día\nenciende - enciende un led de un dispositivo conectado\napaga - apaga un led de un dispositivo conectado\nsonido - emite un sonido en un dispositivo conectado\nmensaje - muestra un mensaje en la pantalla de un dispositivo conectado\ntweet - manda un tweet\nmail - manda un email\nfoto - hace una foto y la muestra en telegram"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 650,
+        "y": 300,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "5f996a5f.ed0024",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 830,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    }
+]

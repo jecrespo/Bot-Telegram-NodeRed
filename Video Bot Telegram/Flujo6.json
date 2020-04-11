@@ -1,0 +1,192 @@
+[
+    {
+        "id": "ddef9c1e.3b5c",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 110,
+        "y": 640,
+        "wires": [
+            [
+                "7d91e4eb.25d70c"
+            ]
+        ]
+    },
+    {
+        "id": "7d91e4eb.25d70c",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/foto",
+        "x": 310,
+        "y": 640,
+        "wires": [
+            [
+                "50aa7619.e50258",
+                "fa77bad5.5803f8"
+            ]
+        ]
+    },
+    {
+        "id": "50aa7619.e50258",
+        "type": "mqtt out",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "foto/bot",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 500,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "c1239e7c.4333a",
+        "type": "mqtt in",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "foto/imagen",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6803b3c6.3db1bc",
+        "x": 90,
+        "y": 720,
+        "wires": [
+            [
+                "90f8b83c.4fcb38"
+            ]
+        ]
+    },
+    {
+        "id": "4eac8339.c516cc",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 710,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "fa77bad5.5803f8",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Solicitando foto....\nEspera unos segundos a que llegue"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 490,
+        "y": 580,
+        "wires": [
+            [
+                "a99eebc0.d85b58"
+            ]
+        ]
+    },
+    {
+        "id": "a99eebc0.d85b58",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "chatid",
+                "pt": "flow",
+                "to": "payload.chatId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 580,
+        "wires": [
+            [
+                "65e6d1bf.6dc4"
+            ]
+        ]
+    },
+    {
+        "id": "65e6d1bf.6dc4",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 830,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "90f8b83c.4fcb38",
+        "type": "function",
+        "z": "9bb3e1e5.884ce",
+        "name": "manda imagen",
+        "func": "imagen = msg.payload;\nchatid = flow.get('chatid');\n\nmsg.payload = {\n    content: imagen,\n    chatId: chatid,\n    type: \"photo\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 720,
+        "wires": [
+            [
+                "3179a0ed.f8049"
+            ]
+        ]
+    },
+    {
+        "id": "3179a0ed.f8049",
+        "type": "chatbot-conversation",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "chatId": "",
+        "transport": "telegram",
+        "x": 490,
+        "y": 720,
+        "wires": [
+            [
+                "4eac8339.c516cc"
+            ]
+        ]
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    },
+    {
+        "id": "6803b3c6.3db1bc",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "m20.cloudmqtt.com",
+        "port": "10488",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

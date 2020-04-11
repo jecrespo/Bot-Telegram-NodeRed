@@ -1,0 +1,906 @@
+[
+    {
+        "id": "9bb3e1e5.884ce",
+        "type": "tab",
+        "label": "Telegram",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c6588f41.31fad",
+        "type": "chatbot-telegram-receive",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "x": 117,
+        "y": 460,
+        "wires": [
+            [
+                "b56dbbfc.886138",
+                "468f84be.2d0b0c",
+                "876e2bac.dd4728",
+                "1c966594.5ae91a",
+                "c26920ba.c8a5e",
+                "38a90205.251c0e",
+                "7d91e4eb.25d70c",
+                "9e53e05e.8db81",
+                "c831375e.de21a8",
+                "25947763.14b2d8",
+                "17f77785.35dfb8"
+            ]
+        ]
+    },
+    {
+        "id": "5f996a5f.ed0024",
+        "type": "chatbot-telegram-send",
+        "z": "9bb3e1e5.884ce",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 970,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b56dbbfc.886138",
+        "type": "debug",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 330,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "468f84be.2d0b0c",
+        "type": "ui_text",
+        "z": "9bb3e1e5.884ce",
+        "group": "e9513c0d.64a8c",
+        "order": 1,
+        "width": "",
+        "height": "",
+        "name": "Telegram feed:   ",
+        "label": "",
+        "format": "{{msg.payload.content}}",
+        "layout": "col-center",
+        "x": 360,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "bc7025a7.d77f88",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/help",
+        "x": 497,
+        "y": 200,
+        "wires": [
+            [
+                "668cfc50.398514"
+            ]
+        ]
+    },
+    {
+        "id": "38a90205.251c0e",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/hora",
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "56731d.5b4b1ce4"
+            ]
+        ]
+    },
+    {
+        "id": "668cfc50.398514",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola {{nombre}}\n\nstart - inicio del bot\nhelp - muestra los comandos\nhola - saluda al bot\nquetal - pregunta al bot que tal está\ntemperatura - temperatura en tu ciudad\nhumedad - humedad en tu ciudad\ntiempo - que tiempo atmosférico hace en tu ciudad\nhora - hora y día\nenciende - enciende un led de un dispositivo conectado\napaga - apaga un led de un dispositivo conectado\nsonido - emite un sonido en un dispositivo conectado\nmensaje - muestra un mensaje en la pantalla de un dispositivo conectado\ntweet - manda un tweet\nmail - manda un email\nfoto - hace una foto y la muestra en telegram"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 657,
+        "y": 180,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "400e3866.c55778",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/start",
+        "x": 497,
+        "y": 160,
+        "wires": [
+            [
+                "668cfc50.398514"
+            ]
+        ]
+    },
+    {
+        "id": "876e2bac.dd4728",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "nombre",
+                "pt": "flow",
+                "to": "originalMessage.from.first_name",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 327,
+        "y": 180,
+        "wires": [
+            [
+                "400e3866.c55778",
+                "bc7025a7.d77f88"
+            ]
+        ]
+    },
+    {
+        "id": "1c966594.5ae91a",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "flow",
+                "to": "originalMessage.from.username",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 327,
+        "y": 260,
+        "wires": [
+            [
+                "b37510d5.bf716",
+                "f9c3aaac.474cb8"
+            ]
+        ]
+    },
+    {
+        "id": "b37510d5.bf716",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/hola",
+        "x": 497,
+        "y": 240,
+        "wires": [
+            [
+                "699f1646.e97398"
+            ]
+        ]
+    },
+    {
+        "id": "f9c3aaac.474cb8",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/quetal",
+        "x": 497,
+        "y": 280,
+        "wires": [
+            [
+                "fd6d51e9.9a66f"
+            ]
+        ]
+    },
+    {
+        "id": "699f1646.e97398",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola {{username}} 👏"
+            },
+            {
+                "message": "👍"
+            },
+            {
+                "message": "Adiós, mantengamos la distancia de seguridad 😷"
+            },
+            {
+                "message": "Me alegro de volver a verte {{username}} 😁"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 657,
+        "y": 240,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "fd6d51e9.9a66f",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hoy no me encuentro muy bien 😷"
+            },
+            {
+                "message": "Muy bien {{username}} ¿Y tu?"
+            },
+            {
+                "message": "Aquí en casa. Recuerdate ¡Quedaté en casa! 🏠"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 657,
+        "y": 280,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "c26920ba.c8a5e",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/tiempo",
+        "x": 307,
+        "y": 320,
+        "wires": [
+            [
+                "2887bf4a.008bf"
+            ]
+        ]
+    },
+    {
+        "id": "2887bf4a.008bf",
+        "type": "openweathermap",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "logrono",
+        "country": "Espana",
+        "language": "es",
+        "x": 477,
+        "y": 320,
+        "wires": [
+            [
+                "7890acdf.39a1e4"
+            ]
+        ]
+    },
+    {
+        "id": "b7c6ca8b.fd84f8",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola este es el tiempo solicitado:\n\n{{tiempo}}"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 797,
+        "y": 320,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "7890acdf.39a1e4",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tiempo",
+                "pt": "flow",
+                "to": "payload.description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 647,
+        "y": 320,
+        "wires": [
+            [
+                "b7c6ca8b.fd84f8"
+            ]
+        ]
+    },
+    {
+        "id": "56731d.5b4b1ce4",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hora",
+                "pt": "flow",
+                "to": "$now()",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 360,
+        "wires": [
+            [
+                "e74644c8.820a78"
+            ]
+        ]
+    },
+    {
+        "id": "2eef1594.07269a",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola esta es la fecha y hora:\n\n{{hora}}"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 710,
+        "y": 360,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "e74644c8.820a78",
+        "type": "moment",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "",
+        "input": "hora",
+        "inputType": "flow",
+        "inTz": "Etc/UTC",
+        "adjAmount": "2",
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "",
+        "locale": "\"POSIX\"",
+        "output": "hora",
+        "outputType": "flow",
+        "outTz": "Etc/UTC",
+        "x": 620,
+        "y": 420,
+        "wires": [
+            [
+                "2eef1594.07269a"
+            ]
+        ]
+    },
+    {
+        "id": "7d91e4eb.25d70c",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/foto",
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "50aa7619.e50258",
+                "fa77bad5.5803f8"
+            ]
+        ]
+    },
+    {
+        "id": "50aa7619.e50258",
+        "type": "mqtt out",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "foto/bot",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 520,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "c1239e7c.4333a",
+        "type": "mqtt in",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "foto/imagen",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6803b3c6.3db1bc",
+        "x": 117,
+        "y": 553,
+        "wires": [
+            [
+                "90f8b83c.4fcb38"
+            ]
+        ]
+    },
+    {
+        "id": "fa77bad5.5803f8",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Solicitando foto....\nEspera unos segundos a que llegue"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 510,
+        "y": 460,
+        "wires": [
+            [
+                "a99eebc0.d85b58"
+            ]
+        ]
+    },
+    {
+        "id": "a99eebc0.d85b58",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "chatid",
+                "pt": "flow",
+                "to": "payload.chatId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 460,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "90f8b83c.4fcb38",
+        "type": "function",
+        "z": "9bb3e1e5.884ce",
+        "name": "manda imagen",
+        "func": "imagen = msg.payload;\nchatid = flow.get('chatid');\n\nmsg.payload = {\n    content: imagen,\n    chatId: chatid,\n    type: \"photo\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 327,
+        "y": 553,
+        "wires": [
+            [
+                "3179a0ed.f8049"
+            ]
+        ]
+    },
+    {
+        "id": "3179a0ed.f8049",
+        "type": "chatbot-conversation",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "chatId": "",
+        "transport": "telegram",
+        "x": 517,
+        "y": 553,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "9e53e05e.8db81",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/enciende",
+        "x": 340,
+        "y": 600,
+        "wires": [
+            [
+                "fed77841.defea8"
+            ]
+        ]
+    },
+    {
+        "id": "c831375e.de21a8",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/apaga",
+        "x": 340,
+        "y": 640,
+        "wires": [
+            [
+                "14fb096b.04ecc7"
+            ]
+        ]
+    },
+    {
+        "id": "fed77841.defea8",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 600,
+        "wires": [
+            [
+                "e9b25c14.01afd",
+                "150e4da0.f24952"
+            ]
+        ]
+    },
+    {
+        "id": "14fb096b.04ecc7",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 640,
+        "wires": [
+            [
+                "e9b25c14.01afd",
+                "84a1f34.51f1c1"
+            ]
+        ]
+    },
+    {
+        "id": "e9b25c14.01afd",
+        "type": "mqtt out",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "m5stickc/led",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 717,
+        "y": 633,
+        "wires": []
+    },
+    {
+        "id": "150e4da0.f24952",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Led Encendido"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 697,
+        "y": 573,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "84a1f34.51f1c1",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Led apagado"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 697,
+        "y": 693,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "25947763.14b2d8",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/sonido",
+        "x": 340,
+        "y": 680,
+        "wires": [
+            [
+                "c7ff2e29.ba074",
+                "674764d3.a9c9ac"
+            ]
+        ]
+    },
+    {
+        "id": "c7ff2e29.ba074",
+        "type": "mqtt out",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "m5stickc/sonido",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 540,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "674764d3.a9c9ac",
+        "type": "chatbot-message",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "message": [
+            {
+                "message": "Sonido emitido"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 510,
+        "y": 680,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "717fa77b.479188",
+        "type": "chatbot-command",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "command": "/mensaje",
+        "x": 440,
+        "y": 780,
+        "wires": [
+            [
+                "82ebe12b.4d6d4"
+            ]
+        ]
+    },
+    {
+        "id": "c425c4d9.cf3e58",
+        "type": "mqtt out",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "topic": "m5stickc/pantalla",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 670,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "82ebe12b.4d6d4",
+        "type": "chatbot-ask",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "answers": [
+            {
+                "value": "Hola",
+                "label": "Hola"
+            },
+            {
+                "value": "SOS",
+                "label": "SOS"
+            },
+            {
+                "value": "Mensaje desde Telegram",
+                "label": "Mensaje desde Telegram"
+            }
+        ],
+        "message": "¿Que mensaje quieres mandar a la pantalla?",
+        "x": 610,
+        "y": 780,
+        "wires": [
+            [
+                "5f996a5f.ed0024"
+            ]
+        ]
+    },
+    {
+        "id": "e8619f7f.44b33",
+        "type": "change",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 820,
+        "wires": [
+            [
+                "c425c4d9.cf3e58"
+            ]
+        ]
+    },
+    {
+        "id": "17f77785.35dfb8",
+        "type": "switch",
+        "z": "9bb3e1e5.884ce",
+        "name": "",
+        "property": "payload.content",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "/",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 780,
+        "wires": [
+            [
+                "717fa77b.479188"
+            ],
+            [
+                "e8619f7f.44b33"
+            ]
+        ]
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "",
+        "polling": "1000",
+        "log": ""
+    },
+    {
+        "id": "e9513c0d.64a8c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Telegram",
+        "tab": "1caf7907.db7587",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6803b3c6.3db1bc",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "m20.cloudmqtt.com",
+        "port": "10488",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "1caf7907.db7587",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Telegram",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
