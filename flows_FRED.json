@@ -1,0 +1,1167 @@
+[
+    {
+        "id": "ba09dbc.7bccd28",
+        "type": "tab",
+        "label": "bot telegram",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "928d8bfa.4da0f8",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "13342512.0e9c4b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "juntosdesdecasa_bot",
+        "usernames": "aprendiendoarduino",
+        "polling": "1000",
+        "log": ""
+    },
+    {
+        "id": "1caf7907.db7587",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Telegram",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "e9513c0d.64a8c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Telegram",
+        "tab": "1caf7907.db7587",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6803b3c6.3db1bc",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "m20.cloudmqtt.com",
+        "port": "10488",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "e0078fa1.0a954",
+        "type": "chatbot-telegram-receive",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "4953d44a.6ebaac",
+                "6edb5214.70ab6c",
+                "fca36dbd.e3658",
+                "7fa3536f.47b6dc"
+            ]
+        ]
+    },
+    {
+        "id": "5744cee9.e7f2d",
+        "type": "chatbot-telegram-send",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 1030,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4953d44a.6ebaac",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "nombre",
+                "pt": "flow",
+                "to": "originalMessage.from.first_name",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "5e7eb7f2.ce6ef8",
+                "ec20c1f6.2f32d"
+            ]
+        ]
+    },
+    {
+        "id": "5e7eb7f2.ce6ef8",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/start",
+        "x": 490,
+        "y": 200,
+        "wires": [
+            [
+                "a84aec34.813b5"
+            ]
+        ]
+    },
+    {
+        "id": "ec20c1f6.2f32d",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/help",
+        "x": 490,
+        "y": 240,
+        "wires": [
+            [
+                "a84aec34.813b5"
+            ]
+        ]
+    },
+    {
+        "id": "a84aec34.813b5",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola {{nombre}}\n\nstart - inicio del bot\nhelp - muestra los comandos\nhola - saluda al bot\nquetal - pregunta al bot que tal está\ntemperatura - temperatura en tu ciudad\nhumedad - humedad en tu ciudad\ntiempo - que tiempo atmosférico hace en tu ciudad\nhora - hora y día\nenciende - enciende un led de un dispositivo conectado\napaga - apaga un led de un dispositivo conectado\nsonido - emite un sonido en un dispositivo conectado\nmensaje - muestra un mensaje en la pantalla de un dispositivo conectado\ntweet - manda un tweet\nmail - manda un email\nfoto - hace una foto y la muestra en telegram"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 650,
+        "y": 220,
+        "wires": [
+            [
+                "5744cee9.e7f2d"
+            ]
+        ]
+    },
+    {
+        "id": "6edb5214.70ab6c",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "flow",
+                "to": "originalMessage.from.username",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "61dbaf61.3222f",
+                "ff0d09e0.1cd908"
+            ]
+        ]
+    },
+    {
+        "id": "61dbaf61.3222f",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/hola",
+        "x": 490,
+        "y": 320,
+        "wires": [
+            [
+                "43e5b1bb.22cb2"
+            ]
+        ]
+    },
+    {
+        "id": "ff0d09e0.1cd908",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/quetal",
+        "x": 490,
+        "y": 360,
+        "wires": [
+            [
+                "d45334d1.a35298"
+            ]
+        ]
+    },
+    {
+        "id": "43e5b1bb.22cb2",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola {{username}} 👏"
+            },
+            {
+                "message": "👍"
+            },
+            {
+                "message": "Adiós, mantengamos la distancia de seguridad 😷"
+            },
+            {
+                "message": "Me alegro de volver a verte {{username}} 😁"
+            },
+            {
+                "message": "Adios"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 650,
+        "y": 320,
+        "wires": [
+            [
+                "5744cee9.e7f2d"
+            ]
+        ]
+    },
+    {
+        "id": "d45334d1.a35298",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Hoy no me encuentro muy bien 😷"
+            },
+            {
+                "message": "Muy bien {{username}} ¿Y tu?"
+            },
+            {
+                "message": "Aquí en casa. Acuerdate ¡Quedaté en casa! 🏠"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 650,
+        "y": 360,
+        "wires": [
+            [
+                "5744cee9.e7f2d"
+            ]
+        ]
+    },
+    {
+        "id": "fca36dbd.e3658",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/tiempo",
+        "x": 500,
+        "y": 420,
+        "wires": [
+            [
+                "ef2fe97e.c61928"
+            ]
+        ]
+    },
+    {
+        "id": "ef2fe97e.c61928",
+        "type": "openweathermap",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "logrono",
+        "country": "Espana",
+        "language": "es",
+        "x": 670,
+        "y": 420,
+        "wires": [
+            [
+                "bb02df51.61a1f"
+            ]
+        ]
+    },
+    {
+        "id": "bb02df51.61a1f",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tiempo",
+                "pt": "flow",
+                "to": "payload.description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 420,
+        "wires": [
+            [
+                "261774e5.4eba6c"
+            ]
+        ]
+    },
+    {
+        "id": "261774e5.4eba6c",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola, este es el tiempo solicitado:\n\n{{tiempo}}"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 1010,
+        "y": 420,
+        "wires": [
+            [
+                "5744cee9.e7f2d"
+            ]
+        ]
+    },
+    {
+        "id": "fc67aa4f.42eb78",
+        "type": "chatbot-telegram-receive",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 600,
+        "wires": [
+            [
+                "abf3efd1.93322"
+            ]
+        ]
+    },
+    {
+        "id": "abf3efd1.93322",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/foto",
+        "x": 330,
+        "y": 620,
+        "wires": [
+            [
+                "1bff6ad.5571a95",
+                "d8db5af3.2e3a08"
+            ]
+        ]
+    },
+    {
+        "id": "1bff6ad.5571a95",
+        "type": "mqtt out",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "topic": "foto/bot",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 520,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "677f6f9a.fec81",
+        "type": "mqtt in",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "topic": "foto/imagen",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6803b3c6.3db1bc",
+        "x": 110,
+        "y": 700,
+        "wires": [
+            [
+                "f62292d.ba5527"
+            ]
+        ]
+    },
+    {
+        "id": "c627ef42.08622",
+        "type": "chatbot-telegram-send",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 730,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "d8db5af3.2e3a08",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Solicitando foto....\nEspera unos segundos a que llegue"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 510,
+        "y": 560,
+        "wires": [
+            [
+                "4546e0b8.2f6db"
+            ]
+        ]
+    },
+    {
+        "id": "4546e0b8.2f6db",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "chatid",
+                "pt": "flow",
+                "to": "payload.chatId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 560,
+        "wires": [
+            [
+                "dc405e83.df13d"
+            ]
+        ]
+    },
+    {
+        "id": "dc405e83.df13d",
+        "type": "chatbot-telegram-send",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 850,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "f62292d.ba5527",
+        "type": "function",
+        "z": "ba09dbc.7bccd28",
+        "name": "manda imagen",
+        "func": "imagen = msg.payload;\nchatid = flow.get('chatid');\n\nmsg.payload = {\n    content: imagen,\n chatId: chatid,\n type: \"photo\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 700,
+        "wires": [
+            [
+                "3194e5c6.3c630a"
+            ]
+        ]
+    },
+    {
+        "id": "3194e5c6.3c630a",
+        "type": "chatbot-conversation",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "chatId": "",
+        "transport": "telegram",
+        "x": 510,
+        "y": 700,
+        "wires": [
+            [
+                "c627ef42.08622"
+            ]
+        ]
+    },
+    {
+        "id": "853300a3.437e2",
+        "type": "chatbot-telegram-receive",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 820,
+        "wires": [
+            [
+                "b40083b0.6666c",
+                "820e0966.f91778"
+            ]
+        ]
+    },
+    {
+        "id": "b40083b0.6666c",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/enciende",
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "de6ecdd0.e2497"
+            ]
+        ]
+    },
+    {
+        "id": "820e0966.f91778",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/apaga",
+        "x": 340,
+        "y": 860,
+        "wires": [
+            [
+                "83efd1bf.9a864"
+            ]
+        ]
+    },
+    {
+        "id": "de6ecdd0.e2497",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 820,
+        "wires": [
+            [
+                "61b18c78.ffcc54",
+                "a1b3a488.395d38"
+            ]
+        ]
+    },
+    {
+        "id": "83efd1bf.9a864",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 860,
+        "wires": [
+            [
+                "61b18c78.ffcc54",
+                "7d5aff7b.34145"
+            ]
+        ]
+    },
+    {
+        "id": "61b18c78.ffcc54",
+        "type": "mqtt out",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "topic": "m5stickc/led",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 710,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "a1b3a488.395d38",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Led Encendido"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 690,
+        "y": 780,
+        "wires": [
+            [
+                "d91eb00c.15ec8"
+            ]
+        ]
+    },
+    {
+        "id": "7d5aff7b.34145",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Led apagado"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 690,
+        "y": 900,
+        "wires": [
+            [
+                "d91eb00c.15ec8"
+            ]
+        ]
+    },
+    {
+        "id": "d91eb00c.15ec8",
+        "type": "chatbot-telegram-send",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 950,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "4292b793.676b68",
+        "type": "chatbot-telegram-receive",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 1000,
+        "wires": [
+            [
+                "99519e0d.e9be4"
+            ]
+        ]
+    },
+    {
+        "id": "99519e0d.e9be4",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/sonido",
+        "x": 360,
+        "y": 1000,
+        "wires": [
+            [
+                "7c2c1950.628e08",
+                "843b94c3.0886a8"
+            ]
+        ]
+    },
+    {
+        "id": "7c2c1950.628e08",
+        "type": "mqtt out",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "topic": "m5stickc/sonido",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 540,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "843b94c3.0886a8",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Sonido emitido"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 530,
+        "y": 1000,
+        "wires": [
+            [
+                "887596e1.3c58e8"
+            ]
+        ]
+    },
+    {
+        "id": "887596e1.3c58e8",
+        "type": "chatbot-telegram-send",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 750,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "e93e8692.205f58",
+        "type": "chatbot-telegram-receive",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "x": 190,
+        "y": 1180,
+        "wires": [
+            [
+                "a953a4c9.98d7b8"
+            ]
+        ]
+    },
+    {
+        "id": "a953a4c9.98d7b8",
+        "type": "switch",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "property": "payload.content",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "/",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 1180,
+        "wires": [
+            [
+                "2d0d7f09.af36a"
+            ],
+            [
+                "e79e78c7.9a23c8"
+            ]
+        ]
+    },
+    {
+        "id": "2d0d7f09.af36a",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/mensaje",
+        "x": 500,
+        "y": 1140,
+        "wires": [
+            [
+                "61e4c157.8d631"
+            ]
+        ]
+    },
+    {
+        "id": "e79e78c7.9a23c8",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1220,
+        "wires": [
+            [
+                "21868d50.d76962"
+            ]
+        ]
+    },
+    {
+        "id": "61e4c157.8d631",
+        "type": "chatbot-ask",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "answers": [
+            {
+                "value": "Hola",
+                "label": "Hola"
+            },
+            {
+                "value": "SOS",
+                "label": "SOS"
+            },
+            {
+                "value": "Mensaje desde Telegram",
+                "label": "Mensaje desde Telegram"
+            }
+        ],
+        "message": "¿Que mensaje quieres mandar a la pantalla?",
+        "x": 670,
+        "y": 1140,
+        "wires": [
+            [
+                "8585a18c.4a15b"
+            ]
+        ]
+    },
+    {
+        "id": "21868d50.d76962",
+        "type": "mqtt out",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "topic": "m5stickc/pantalla",
+        "qos": "",
+        "retain": "",
+        "broker": "6803b3c6.3db1bc",
+        "x": 710,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "8585a18c.4a15b",
+        "type": "chatbot-telegram-send",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 870,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "7fa3536f.47b6dc",
+        "type": "debug",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 300,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "83690dc7.bfbcd",
+        "type": "chatbot-telegram-receive",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "x": 130,
+        "y": 1300,
+        "wires": [
+            [
+                "f0b76698.d31648"
+            ]
+        ]
+    },
+    {
+        "id": "f0b76698.d31648",
+        "type": "chatbot-command",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "command": "/hora",
+        "x": 330,
+        "y": 1300,
+        "wires": [
+            [
+                "dac1a952.653608"
+            ]
+        ]
+    },
+    {
+        "id": "dac1a952.653608",
+        "type": "change",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hora",
+                "pt": "flow",
+                "to": "$now()",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 1300,
+        "wires": [
+            [
+                "bb6c4322.79c78"
+            ]
+        ]
+    },
+    {
+        "id": "bb6c4322.79c78",
+        "type": "moment",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "topic": "",
+        "input": "hora",
+        "inputType": "flow",
+        "inTz": "Etc/UTC",
+        "adjAmount": "2",
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "",
+        "locale": "\"POSIX\"",
+        "output": "hora",
+        "outputType": "flow",
+        "outTz": "Etc/UTC",
+        "x": 620,
+        "y": 1360,
+        "wires": [
+            [
+                "dd512d9.e3bb8d"
+            ]
+        ]
+    },
+    {
+        "id": "dd512d9.e3bb8d",
+        "type": "chatbot-message",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "message": [
+            {
+                "message": "Hola esta es la fecha y hora:\n\n{{hora}}"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "parse_mode": "",
+        "x": 710,
+        "y": 1300,
+        "wires": [
+            [
+                "b5d65007.28def"
+            ]
+        ]
+    },
+    {
+        "id": "b5d65007.28def",
+        "type": "chatbot-telegram-send",
+        "z": "ba09dbc.7bccd28",
+        "bot": "13342512.0e9c4b",
+        "track": false,
+        "outputs": 0,
+        "x": 870,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "535b0340.8d80ac",
+        "type": "catch",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 180,
+        "y": 1480,
+        "wires": [
+            [
+                "817e7328.bedee"
+            ]
+        ]
+    },
+    {
+        "id": "4b249db1.62f904",
+        "type": "status",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "scope": null,
+        "x": 180,
+        "y": 1420,
+        "wires": [
+            [
+                "c4249f5e.558c4"
+            ]
+        ]
+    },
+    {
+        "id": "817e7328.bedee",
+        "type": "debug",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 390,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "c4249f5e.558c4",
+        "type": "debug",
+        "z": "ba09dbc.7bccd28",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 390,
+        "y": 1420,
+        "wires": []
+    }
+]
